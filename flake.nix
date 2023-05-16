@@ -21,17 +21,17 @@
       rec {
         inherit (overlay);
 
-        defaultPackage = pkgs.roshan-site;
+        packages.default = pkgs.roshan-site;
 
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           buildInputs = [ pkgs.zola ];
         };
 
-        defaultApp = pkgs.writeShellScriptBin "roshan-site" ''
-          #!${pkgs.stdenv.shell}
-          cd site
-          ${pkgs.zola}/bin/zola serve --port 8000
-        '';
+        # defaultApp =  pkgs.writeShellScriptBin "roshan-site" ''
+        #   #!${pkgs.stdenv.shell}
+        #   cd site
+        #   ${pkgs.zola}/bin/zola serve --port 8000
+        # '';
 
       }
     );
