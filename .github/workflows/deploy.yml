@@ -18,15 +18,14 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
       - name: Build Zola site with Nix Flakes
-        uses: cachix/install-nix-action@v14
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v20
         with:
-          install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.4pre20210823_af94b54/install
+          nix_path: nixpkgs=channel:nixpkgs-22.11
           extra_nix_config: |
             experimental-features = nix-command flakes
-      # - run: nix flake check
+      - run: nix flake check
       - run: nix build --out-link build
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v3
