@@ -21,15 +21,15 @@ jobs:
       - name: Build Zola site with Nix Flakes
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v20
-        with:
-          nix_path: nixpkgs=channel:nixpkgs-22.11
-          extra_nix_config: |
-            experimental-features = nix-command flakes
+      with:
+        nix_path: nixpkgs=channel:nixpkgs-22.11
+        extra_nix_config: |
+          experimental-features = nix-command flakes
       - run: nix flake check
       - run: nix build --out-link build
       - name: Deploy to GH Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.REPO_TOKEN }}
-          publish_dir: ./build
-          cname: thedev.one
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.REPO_TOKEN }}
+        publish_dir: ./build
+        cname: thedev.one
