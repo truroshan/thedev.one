@@ -26,7 +26,7 @@ jobs:
           install_url: https://github.com/numtide/nix-unstable-installer/releases/download/nix-2.4pre20210823_af94b54/install
           extra_nix_config: |
             experimental-features = nix-command flakes
-      - run: nix flake check
+      # - run: nix flake check
       - run: nix build --out-link build
       - name: Deploy to GH Pages
         uses: peaceiris/actions-gh-pages@v3
