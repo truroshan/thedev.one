@@ -41,5 +41,5 @@ main_menu_items = [
     { url = "/blog/", name="blog" },
     { url = "/about/", name="about" },
     { url = "/projects/", name="projects" },
-    { url = "https://github.com/jordanisaacs", name="github", external=true, newtab=true},
+    { url = "https://github.com/thedevone", name="github", external=true, newtab=true},
 ]
