@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title> - The Blog</title>
+        <link>https://thedev.one/blog/</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://thedev.one/blog/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 03 May 2023 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Creating a Superuser in Django Using Python Script</title>
+            <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
+            <link>https://thedev.one/blog/django-superuser/</link>
+            <guid>https://thedev.one/blog/django-superuser/</guid>
+            <description>&lt;h1 id=&quot;in-this-blog&quot;&gt;In this blog&lt;a class=&quot;zola-anchor&quot; href=&quot;#in-this-blog&quot; aria-label=&quot;Anchor link for: in-this-blog&quot;&gt;§&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;p&gt;we will walk through a code snippet that demonstrates how to create a superuser in Django using environment variables. This technique can be useful in production environments where it&#x27;s not secure to hardcode sensitive information like usernames and passwords in the source code.&lt;&#x2F;p&gt;
+&lt;h1 id=&quot;let-s-take-a-look-at-the-code-snippet&quot;&gt;Let&#x27;s take a look at the code snippet:&lt;a class=&quot;zola-anchor&quot; href=&quot;#let-s-take-a-look-at-the-code-snippet&quot; aria-label=&quot;Anchor link for: let-s-take-a-look-at-the-code-snippet&quot;&gt;§&lt;&#x2F;a&gt;
+&lt;&#x2F;h1&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;os
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;django
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;from &lt;&#x2F;span&gt;&lt;span&gt;django.contrib.auth &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;get_user_model
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Set DJANGO_SETTINGS_MODULE environment variable
+&lt;&#x2F;span&gt;&lt;span&gt;django.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;setup&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;User = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get_user_model&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Get superuser credentials from environment variables
+&lt;&#x2F;span&gt;&lt;span&gt;superuser_username = os.environ.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;DJANGO_SUPERUSER_USERNAME&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;superuser_email = os.environ.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;DJANGO_SUPERUSER_EMAIL&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;superuser_password = os.environ.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;DJANGO_SUPERUSER_PASSWORD&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# Check if the superuser already exists
+&lt;&#x2F;span&gt;&lt;span&gt;    user = User.objects.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;get&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;username&lt;&#x2F;span&gt;&lt;span&gt;=superuser_username)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# If the user exists but the password doesn&amp;#39;t match, update the password
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;not user.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;check_password&lt;&#x2F;span&gt;&lt;span&gt;(superuser_password):
+&lt;&#x2F;span&gt;&lt;span&gt;        user.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;set_password&lt;&#x2F;span&gt;&lt;span&gt;(superuser_password)
+&lt;&#x2F;span&gt;&lt;span&gt;        user.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;save&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Superuser password updated successfully&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Superuser already exists&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;except &lt;&#x2F;span&gt;&lt;span&gt;User.DoesNotExist:
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;# If the superuser doesn&amp;#39;t exist, create it
+&lt;&#x2F;span&gt;&lt;span&gt;    user = User.objects.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;create_superuser&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;username&lt;&#x2F;span&gt;&lt;span&gt;=superuser_username,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;email&lt;&#x2F;span&gt;&lt;span&gt;=superuser_email,
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;password&lt;&#x2F;span&gt;&lt;span&gt;=superuser_password,
+&lt;&#x2F;span&gt;&lt;span&gt;    )
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;print&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Superuser created successfully&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</description>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Creating a Superuser in Django Using Python Script - roshan</title>
+    <link rel="stylesheet" href="https://thedev.one/style.css">
+    <link rel="stylesheet" href="https://thedev.one/color/blue.css">
+
+    <link rel="stylesheet" href="https://thedev.one/font-jbm.css">
+
+    
+        <link rel="shortcut icon" href="https://thedev.one/favicon.ico?" type="image/x-icon"/>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <title>Jordan Isaacs' Blog</title>
+</head>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155267941-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+    gtag('config', 'UA-155267941-1');
+</script>
+
+<body class="">
+    <div class="container center">
+<header class="header">
+    <div class="header-inner">
+        <div class="header-logo">
+            <a href="https:&#x2F;&#x2F;thedev.one">
+    <div class="logo">
+        ro
+    </div>
+</a>
+        </div>
+        <div class="menu-trigger" tabindex="0">
+            <div class="menu-trigger-button">menu</div>
+        </div>
+    </div>
+    
+    <nav class="menu-desktop">
+            <ul class="menu-inner menu-inner-desktop">
+                
+    
+        
+        
+        
+        
+            <li><a href="https://thedev.one/blog">
+        blog
+    </a></li><li><a href="https://thedev.one/about">
+        about
+    </a></li><li><a href="https://thedev.one/projects">
+        projects
+    </a></li><li><a href="https:&#x2F;&#x2F;github.com&#x2F;jordanisaacs" rel="noopener noreferrer nofollow" target="_blank">
+        github </a></li></ul>
+
+        </nav>
+        <nav class="menu-mobile">
+            <ul class="menu-inner menu-inner-mobile hidden">
+                
+    
+        
+        
+        
+        
+            <li><a href="https://thedev.one/blog">
+        blog
+    </a></li><li><a href="https://thedev.one/about">
+        about
+    </a></li><li><a href="https://thedev.one/projects">
+        projects
+    </a></li><li><a href="https:&#x2F;&#x2F;github.com&#x2F;jordanisaacs" rel="noopener noreferrer nofollow" target="_blank">
+        github </a></li>
+            </ul>
+        </nav>
+    
+</header>
+<div class="content"><article class="post">
+        
+        <header>
+            <h1 class="post-title">
+                
+                    <a href="https:&#x2F;&#x2F;thedev.one&#x2F;blog&#x2F;django-superuser&#x2F;">Creating a Superuser in Django Using Python Script</a>
+                
+            </h1>
+            
+<div class="post-meta meta-page">
+        
+    <span class="post-date">2023.05.03</span>
+
+        
+        :: <span class="post-readtime">
+            1 min read
+        </span>
+        
+
+        
+    
+    ::
+    <strong>^<a href="https://thedev.one/series/django-snippet/">Django Snippet</a></strong>
+    
+    
+    ::
+    #<a href="https://thedev.one/tags/django/">Django</a>
+    #<a href="https://thedev.one/tags/python/">Python</a>
+    
+    
+    </div>
+
+            
+        </header>
+        
+        <div class="post-content">
+            <h1 id="in-this-blog">In this blog<a class="zola-anchor" href="#in-this-blog" aria-label="Anchor link for: in-this-blog">§</a>
+</h1>
+<p>we will walk through a code snippet that demonstrates how to create a superuser in Django using environment variables. This technique can be useful in production environments where it's not secure to hardcode sensitive information like usernames and passwords in the source code.</p>
+<h1 id="let-s-take-a-look-at-the-code-snippet">Let's take a look at the code snippet:<a class="zola-anchor" href="#let-s-take-a-look-at-the-code-snippet" aria-label="Anchor link for: let-s-take-a-look-at-the-code-snippet">§</a>
+</h1>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>os
+</span><span style="color:#b48ead;">import </span><span>django
+</span><span style="color:#b48ead;">from </span><span>django.contrib.auth </span><span style="color:#b48ead;">import </span><span>get_user_model
+</span><span>
+</span><span style="color:#65737e;"># Set DJANGO_SETTINGS_MODULE environment variable
+</span><span>django.</span><span style="color:#bf616a;">setup</span><span>()
+</span><span>User = </span><span style="color:#bf616a;">get_user_model</span><span>()
+</span><span>
+</span><span style="color:#65737e;"># Get superuser credentials from environment variables
+</span><span>superuser_username = os.environ.</span><span style="color:#bf616a;">get</span><span>(&#39;</span><span style="color:#a3be8c;">DJANGO_SUPERUSER_USERNAME</span><span>&#39;)
+</span><span>superuser_email = os.environ.</span><span style="color:#bf616a;">get</span><span>(&#39;</span><span style="color:#a3be8c;">DJANGO_SUPERUSER_EMAIL</span><span>&#39;)
+</span><span>superuser_password = os.environ.</span><span style="color:#bf616a;">get</span><span>(&#39;</span><span style="color:#a3be8c;">DJANGO_SUPERUSER_PASSWORD</span><span>&#39;)
+</span><span>
+</span><span style="color:#b48ead;">try</span><span>:
+</span><span>    </span><span style="color:#65737e;"># Check if the superuser already exists
+</span><span>    user = User.objects.</span><span style="color:#bf616a;">get</span><span>(</span><span style="color:#bf616a;">username</span><span>=superuser_username)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># If the user exists but the password doesn&#39;t match, update the password
+</span><span>    </span><span style="color:#b48ead;">if </span><span>not user.</span><span style="color:#bf616a;">check_password</span><span>(superuser_password):
+</span><span>        user.</span><span style="color:#bf616a;">set_password</span><span>(superuser_password)
+</span><span>        user.</span><span style="color:#bf616a;">save</span><span>()
+</span><span>        </span><span style="color:#96b5b4;">print</span><span>(&#39;</span><span style="color:#a3be8c;">Superuser password updated successfully</span><span>&#39;)
+</span><span>    </span><span style="color:#b48ead;">else</span><span>:
+</span><span>        </span><span style="color:#96b5b4;">print</span><span>(&#39;</span><span style="color:#a3be8c;">Superuser already exists</span><span>&#39;)
+</span><span>
+</span><span style="color:#b48ead;">except </span><span>User.DoesNotExist:
+</span><span>    </span><span style="color:#65737e;"># If the superuser doesn&#39;t exist, create it
+</span><span>    user = User.objects.</span><span style="color:#bf616a;">create_superuser</span><span>(
+</span><span>        </span><span style="color:#bf616a;">username</span><span>=superuser_username,
+</span><span>        </span><span style="color:#bf616a;">email</span><span>=superuser_email,
+</span><span>        </span><span style="color:#bf616a;">password</span><span>=superuser_password,
+</span><span>    )
+</span><span>    </span><span style="color:#96b5b4;">print</span><span>(&#39;</span><span style="color:#a3be8c;">Superuser created successfully</span><span>&#39;)
+</span></code></pre>
+
+        </div>
+
+        
+
+        
+
+        
+    </article></div>
+
+<footer class="footer">
+                <div class="footer__inner">
+  <div class="copyright">
+      <span>
+          © 2023 Roshan Kumar Rajak ::
+          Powered by
+          <a href="https:&#x2F;&#x2F;getzola.org&#x2F;" rel="noopener noreferrer nofollow" target="_blank">
+        Zola</a>
+      </span>
+      <span>
+          Like this site? see <a href="https:&#x2F;&#x2F;github.com&#x2F;thedevone&#x2F;thedev.one" rel="noopener noreferrer nofollow" target="_blank">
+        source code here</a>
+      </span>
+  </div>
+
+    <script type="text/javascript" src="https://thedev.one/js/main.js"></script>
+</div>
+                <div style="display:none;">
+                    <a rel="me" href="https://hachyderm.io/@snowytrees">Mastodon</a>
+                </div>
+            </footer></div>
+</body>
+
+</html>
