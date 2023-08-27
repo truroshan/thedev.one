@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://thedev.one"
+base_url = "https://byteio.in"
 
 
 # Whether to automatically compile all Sass files in the sass directory
