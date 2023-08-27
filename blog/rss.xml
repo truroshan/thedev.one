@@ -2,17 +2,17 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
       <title> - The Blog</title>
-        <link>https://thedev.one/blog/</link>
+        <link>https://byteio.in/blog/</link>
         <description></description>
         <generator>Zola</generator>
         <language>en</language>
-        <atom:link href="https://thedev.one/blog/rss.xml" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://byteio.in/blog/rss.xml" rel="self" type="application/rss+xml"/>
         <lastBuildDate>Wed, 03 May 2023 00:00:00 +0000</lastBuildDate>
         <item>
             <title>Creating a Superuser in Django Using Python Script</title>
             <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
-            <link>https://thedev.one/blog/django-superuser/</link>
-            <guid>https://thedev.one/blog/django-superuser/</guid>
+            <link>https://byteio.in/blog/django-superuser/</link>
+            <guid>https://byteio.in/blog/django-superuser/</guid>
             <description>&lt;h1 id=&quot;in-this-blog&quot;&gt;In this blog&lt;a class=&quot;zola-anchor&quot; href=&quot;#in-this-blog&quot; aria-label=&quot;Anchor link for: in-this-blog&quot;&gt;§&lt;&#x2F;a&gt;
 &lt;&#x2F;h1&gt;
 &lt;p&gt;we will walk through a code snippet that demonstrates how to create a superuser in Django using environment variables. This technique can be useful in production environments where it&#x27;s not secure to hardcode sensitive information like usernames and passwords in the source code.&lt;&#x2F;p&gt;

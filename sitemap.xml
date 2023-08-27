@@ -1,52 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://thedev.one/</loc>
+        <loc>https://byteio.in/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/about/</loc>
+        <loc>https://byteio.in/about/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/archive/</loc>
+        <loc>https://byteio.in/archive/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/blog/</loc>
+        <loc>https://byteio.in/blog/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/blog/django-superuser/</loc>
+        <loc>https://byteio.in/blog/django-superuser/</loc>
         <lastmod>2023-05-03</lastmod>
     </url>
     <url>
-        <loc>https://thedev.one/blog/page/1/</loc>
+        <loc>https://byteio.in/blog/page/1/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/feeds/</loc>
+        <loc>https://byteio.in/feeds/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/projects/</loc>
+        <loc>https://byteio.in/projects/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/series/</loc>
+        <loc>https://byteio.in/series/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/series/django-snippet/</loc>
+        <loc>https://byteio.in/series/django-snippet/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/series/django-snippet/page/1/</loc>
+        <loc>https://byteio.in/series/django-snippet/page/1/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/tags/</loc>
+        <loc>https://byteio.in/tags/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/tags/django/</loc>
+        <loc>https://byteio.in/tags/django/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/tags/django/page/1/</loc>
+        <loc>https://byteio.in/tags/django/page/1/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/tags/python/</loc>
+        <loc>https://byteio.in/tags/python/</loc>
     </url>
     <url>
-        <loc>https://thedev.one/tags/python/page/1/</loc>
+        <loc>https://byteio.in/tags/python/page/1/</loc>
     </url>
 </urlset>
