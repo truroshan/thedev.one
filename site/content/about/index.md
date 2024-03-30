@@ -17,8 +17,9 @@ All the ways to follow or get in contact with me.
 
 ## Email
 
-mail *at* thedev *dot* one
+roshan *at* byteio *dot* in
 
 ##  Media
 
-* Github: @[thedevone ](https://github.com/thedevone)
+* Github: @[truroshan ](https://github.com/truroshan)
+* Linkedin: @[truroshan ](https://www.linkedin.com/in/truroshan)
